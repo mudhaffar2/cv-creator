@@ -1,0 +1,51 @@
+
+* {
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+#container {
+  width:60vw;
+  margin:auto;
+}
+
+#basic img {
+  float:right;
+  width:15vw;
+  border: 1px solid black;
+  height:15vw;
+  border-radius: 50%;
+}
+
+label {
+  width:35vw;
+  display:block;
+}
+
+textarea {
+  width: 35vw;
+  height:10vw;
+}
+
+input {
+  width: 35vw;
+}
+
+.btnAdd {
+  position:relative;
+  float:right;
+}
+
+.btnDel {
+  position: relative;
+  margin-left: 28vw;
+}
+
+#links img {
+  width:20px;
+  height:20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  vertical-align: middle;
+  margin-right: 10px;
+}
