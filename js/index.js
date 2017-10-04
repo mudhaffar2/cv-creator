@@ -129,10 +129,10 @@ function addHobby() {
   var labelHobby = document.createElement('label');
   labelHobby.textContent = 'hobby';
   var inputHobby = document.createElement('input');
-  
+
   div.appendChild(labelHobby);
   div.appendChild(inputHobby);
-  
+
   var btnDel = document.createElement('button');
   btnDel.textContent = 'x';
   btnDel.classList.add('btnDel');
@@ -151,38 +151,38 @@ function addContact() {
   var labelStreet = document.createElement('label');
   labelStreet.textContent = 'str. name:';
   var inputStreet = document.createElement('input');
-  
+
   div.appendChild(labelStreet);
   div.appendChild(inputStreet);
 
   var labelHouseNo = document.createElement('label');
   labelHouseNo.textContent = 'house no.:';
   var inputHouseNo = document.createElement('input');
-  
+
   div.appendChild(labelHouseNo);
   div.appendChild(inputHouseNo);
 
   var labelZip = document.createElement('label');
   labelZip.textContent = 'zip code:';
   var inputZip = document.createElement('input');
-  
+
   div.appendChild(labelZip);
   div.appendChild(inputZip);
 
   var labelCity = document.createElement('label');
   labelCity.textContent = 'city:';
   var inputCity = document.createElement('input');
-  
+
   div.appendChild(labelCity);
   div.appendChild(inputCity);
 
   var labelCountry = document.createElement('label');
   labelCountry.textContent = 'country:';
   var inputCountry = document.createElement('input');
-  
+
   div.appendChild(labelCountry);
   div.appendChild(inputCountry);
-  
+
   var btnDel = document.createElement('button');
   btnDel.textContent = 'x';
   btnDel.classList.add('btnDel');
@@ -202,7 +202,7 @@ function addLink() {
 
   var imgFacebook = document.createElement('img');
   var inputFacebookLink = document.createElement('input');
-  
+
   divFacebook.appendChild(imgFacebook);
   divFacebook.appendChild(inputFacebookLink);
 
@@ -210,7 +210,7 @@ function addLink() {
 
   var imgTwitter = document.createElement('img');
   var inputTwitterLink = document.createElement('input');
-  
+
   divTwitter.appendChild(imgTwitter);
   divTwitter.appendChild(inputTwitterLink);
 
@@ -218,7 +218,7 @@ function addLink() {
 
   var imgGit = document.createElement('img');
   var inputGitLink = document.createElement('input');
-  
+
   divGit.appendChild(imgGit);
   divGit.appendChild(inputGitLink);
 
@@ -226,7 +226,7 @@ function addLink() {
 
   var imgStack = document.createElement('img');
   var inputStackLink = document.createElement('input');
-  
+
   divStack.appendChild(imgStack);
   divStack.appendChild(inputStackLink);
 
@@ -234,7 +234,7 @@ function addLink() {
   div.appendChild(divTwitter);
   div.appendChild(divGit);
   div.appendChild(divStack);
-  
+
   var btnDel = document.createElement('button');
   btnDel.textContent = 'x';
   btnDel.classList.add('btnDel');
@@ -246,7 +246,6 @@ function addLink() {
 
   return div;
 }
-
 
 /////////////////  code
 
@@ -279,8 +278,3 @@ addBtns.forEach(function(btn) {
     }
   });
 });
-
-
-
-
-

@@ -5,40 +5,64 @@
 }
 
 #container {
+  min-width: 500px;
   width:60vw;
   margin:auto;
 }
 
-#basic img {
-  float:right;
-  width:15vw;
-  border: 1px solid black;
-  height:15vw;
+#container>div {
+  background-color: lightgrey;
+  min-height: 100px;
+  padding:0 10px 5px 10px;
+  margin:10px;
+}
+
+#container div {
+  position:relative;
+}
+
+#mainImg {
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:25%;
+  background-color: blue;
   border-radius: 50%;
+  text-align: center;
+}
+
+#mainImg:before {
+  content: '';
+  float:left;
+  padding-bottom: 100%;
 }
 
 label {
-  width:35vw;
+  width:60%;
   display:block;
 }
 
 textarea {
-  width: 35vw;
-  height:10vw;
+  width: 60%;
+  height:12vw;
+  min-height: 80px;
+  resize:none;
 }
 
 input {
-  width: 35vw;
+  width: 60%;
 }
 
 .btnAdd {
-  position:relative;
-  float:right;
+  position:absolute;
+  right:5px;
+  top:5px;
 }
 
 .btnDel {
-  position: relative;
-  margin-left: 28vw;
+  position: absolute;
+  right:28%;
+  bottom:5px;
 }
 
 #links img {
