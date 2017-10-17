@@ -1,28 +1,34 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>cv creator</title>
+  <script src="libraries/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="libraries/bootstrap.min.css">
+  <script type="text/javascript" src="libraries/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
+
 <body>
-  <div id="container">
+  <div id="container" class="container max-width">
     <h1>cv creator</h1>
-    <div id="basic">
-      <img id="mainImg" src="img/pic.jpg" alt="upload your picture">
-      <label>name:</label>
-      <input type="text" id="name">
-      <label>short description of yourself:</label>
-      <textarea id="description"></textarea>
+    <div id="basic" class="row">
+      <div class="col-lg-8">
+        <label>name:</label>
+        <input type="text" id="name">
+        <label>short description of yourself:</label>
+        <textarea id="description"></textarea>
+      </div>
+      <div class="col-lg-4"><img id="mainImg" class="rounded-circle" src="img/pic.jpg"></div>
     </div>
-    <div id="education"><h2>education:</h2><button class="btnAdd">+</button></div>
-    <div id="experience"><h2>experience:</h2><button class="btnAdd">+</button></div>
-    <div id="skills"><h2>skills:</h2><button class="btnAdd">+</button></div>
-    <div id="languages"><h2>languages:</h2><button class="btnAdd">+</button></div>
-    <div id="hobbies"><h2>hobbies:</h2><button class="btnAdd">+</button></div>
-    <div id="contacts"><h2>contacts:</h2><button class="btnAdd">+</button></div>
-    <div id="links"><h2>links:</h2><button class="btnAdd">+</button></div>
-    <button id="save">save</button>
+    <div id="education"><h3>education:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="experience"><h3>experience:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="skills"><h3>skills:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="languages"><h3>languages:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="hobbies"><h3>hobbies:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="contacts"><h3>contacts:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <div id="links"><h3>links:</h3><button class="btnAdd btn btn-success">add</button></div>
+    <button id="btnSave" class="btn btn-primary btn-lg btn-block">save</button>
   </div>
   <script type="text/javascript" src="js/index.js"></script>
 </body>

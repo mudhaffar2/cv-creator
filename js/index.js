@@ -1,280 +1,228 @@
 
-//////////// variables
+$(function() {
 
-var educationList = document.getElementById('education');
-var experienceList = document.getElementById('experience');
-var skillsList = document.getElementById('skills');
-var languagesList = document.getElementById('languages');
-var hobbiesList = document.getElementById('hobbies');
-var contactsList = document.getElementById('contacts');
-var linksList = document.getElementById('links');
-var btnAddEducation = document.getElementById('btnAddEducation');
-var btnAddExperience = document.getElementById('btnAddExperience');
-var btnAddSkill = document.getElementById('btnAddSkill');
-var btnAddLanguage = document.getElementById('btnAddLanguage');
-var btnAddHobby = document.getElementById('btnAddHobby');
-var btnAddContact = document.getElementById('btnAddContact');
-var btnAddLink = document.getElementById('btnAddLink');
+  //////////// variables
 
-//////////// functions
+  var educationList = $('#education');
+  var experienceList = $('#experience');
+  var skillsList = $('#skills');
+  var languagesList = $('#languages');
+  var hobbiesList = $('#hobbies');
+  var contactsList = $('#contacts');
+  var linksList = $('#links');
+  var allObject = {};
 
-function addEduExp(field) {
-  var div = document.createElement('div');
+  //////////// functions
 
-  var label1 = document.createElement('label');
-  var fieldSign = (field==='education') ? 'degree':'position';
-  label1.textContent = fieldSign + ':';
-  var input1 = document.createElement('input');
-  div.appendChild(label1);
-  div.appendChild(input1);
-
-  var label2 = document.createElement('label');
-  label2.textContent = 'organization:';
-  var input2 = document.createElement('input');
-  div.appendChild(label2);
-  div.appendChild(input2);
-
-  var label3 = document.createElement('label');
-  label3.textContent = 'start:';
-  var select3 = optionList(1950,2017);
-  div.appendChild(label3);
-  div.appendChild(select3);
-
-  var label4 = document.createElement('label');
-  label4.textContent = 'end:';
-  var select4 = optionList(1950,2017);
-  div.appendChild(label4);
-  div.appendChild(select4);
-
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
-
-  return div;
-}
-
-function optionList(start, end) {
-  var selectList = document.createElement('select');
-  for (var i=start; i<=end; i++) {
-    var option = document.createElement('option');
-    option.textContent = i;
-    option.value = i;
-    selectList.appendChild(option);
+  function deleteButton() {
+    var btnDel = $('<button></button>').text('remove').addClass('btnDel btn btn-danger');
+    btnDel.on('click', function() {
+      $(this).parent().remove();
+    });
+    return btnDel;
   }
-  return selectList;
-}
 
-function addSkill() {
-  var div = document.createElement('div');
+  function optionList(start, end) {
+    var selectList = $('<select></select>').addClass('custom-select');
+    for (var i=start; i<=end; i++) {
+      var option = $('<option></option>').text(i).val(i);
+      selectList.append(option);
+    }
+    return selectList;
+  }
 
-  var labelSkill = document.createElement('label');
-  labelSkill.textContent = 'skill';
-  var inputSkill = document.createElement('input');
-  var labelYear = document.createElement('label');
-  labelYear.textContent = 'year';
-  var inputYear = document.createElement('input');
+  function addEduExp(field) {
+    var div = $('<div></div>');
 
-  div.appendChild(labelSkill);
-  div.appendChild(inputSkill);
-  div.appendChild(labelYear);
-  div.appendChild(inputYear);
+    var fieldSign = (field==='education') ? 'degree:':'position:';
+    var label1 = $('<label></label>').text(fieldSign);
+    var input1 = $('<input>');
+    div.append(label1);
+    div.append(input1);
 
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
+    var label2 = $('<label></label>').text('organization:');
+    var input2 = $('<input>');
+    div.append(label2);
+    div.append(input2);
 
-  return div;
-}
+    var label3 = $('<label></label>').text('start:');
+    var select3 = optionList(1950,2017);
+    div.append(label3);
+    div.append(select3);
 
-function addLanguage() {
-  var div = document.createElement('div');
+    var label4 = $('<label></label>').text('end:');
+    var select4 = optionList(1950,2017);
+    div.append(label4);
+    div.append(select4);
 
-  var labelLanguage = document.createElement('label');
-  labelLanguage.textContent = 'language';
-  var inputLanguage = document.createElement('input');
-  var labelLevel = document.createElement('label');
-  labelLevel.textContent = 'level';
-  var selectLevel = optionList(1,10);
+    div.append(deleteButton());
 
-  div.appendChild(labelLanguage);
-  div.appendChild(inputLanguage);
-  div.appendChild(labelLevel);
-  div.appendChild(selectLevel);
+    return div;
+  }
 
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
+  function addSkill() {
+    var div = $('<div></div>');
 
-  return div;
-}
+    var labelSkill = $('<label></label>').text('skill');
+    var inputSkill = $('<input>');
+    var labelYear = $('<label></label>').text('year');
+    var inputYear = $('<input>');
 
-function addHobby() {
-  var div = document.createElement('div');
+    div.append(labelSkill);
+    div.append(inputSkill);
+    div.append(labelYear);
+    div.append(inputYear);
 
-  var labelHobby = document.createElement('label');
-  labelHobby.textContent = 'hobby';
-  var inputHobby = document.createElement('input');
+    div.append(deleteButton());
 
-  div.appendChild(labelHobby);
-  div.appendChild(inputHobby);
+    return div;
+  }
 
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
+  function addLanguage() {
+    var div = $('<div></div>');
 
-  return div;
-}
+    var labelLanguage = $('<label></label>').text('language');
+    var inputLanguage = $('<input>');
+    var labelLevel = $('<label></label>').text('level');
+    var selectLevel = optionList(1,10);
 
-function addContact() {
-  var div = document.createElement('div');
+    div.append(labelLanguage);
+    div.append(inputLanguage);
+    div.append(labelLevel);
+    div.append(selectLevel);
 
-  var labelStreet = document.createElement('label');
-  labelStreet.textContent = 'str. name:';
-  var inputStreet = document.createElement('input');
+    div.append(deleteButton());
 
-  div.appendChild(labelStreet);
-  div.appendChild(inputStreet);
+    return div;
+  }
 
-  var labelHouseNo = document.createElement('label');
-  labelHouseNo.textContent = 'house no.:';
-  var inputHouseNo = document.createElement('input');
+  function addHobby() {
+    var div = $('<div></div>');
 
-  div.appendChild(labelHouseNo);
-  div.appendChild(inputHouseNo);
+    var labelHobby = $('<label></label>').text('hobby');
+    var inputHobby = $('<input>');
 
-  var labelZip = document.createElement('label');
-  labelZip.textContent = 'zip code:';
-  var inputZip = document.createElement('input');
+    div.append(labelHobby);
+    div.append(inputHobby);
 
-  div.appendChild(labelZip);
-  div.appendChild(inputZip);
+    div.append(deleteButton());
 
-  var labelCity = document.createElement('label');
-  labelCity.textContent = 'city:';
-  var inputCity = document.createElement('input');
+    return div;
+  }
 
-  div.appendChild(labelCity);
-  div.appendChild(inputCity);
+  function addContact() {
+    var div = $('<div></div>');
 
-  var labelCountry = document.createElement('label');
-  labelCountry.textContent = 'country:';
-  var inputCountry = document.createElement('input');
+    var labelStreet = $('<label></label>').text('str. name:');
+    var inputStreet = $('<input>');
 
-  div.appendChild(labelCountry);
-  div.appendChild(inputCountry);
+    div.append(labelStreet);
+    div.append(inputStreet);
 
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
+    var labelHouseNo = $('<label></label>').text('house no.:');
+    var inputHouseNo = $('<input>');
 
-  return div;
-}
+    div.append(labelHouseNo);
+    div.append(inputHouseNo);
 
-function addLink() {
-  var div = document.createElement('div');
+    var labelZip = $('<label></label>').text('zip code:');
+    var inputZip = $('<input>');
 
-  var divFacebook = document.createElement('div');
+    div.append(labelZip);
+    div.append(inputZip);
 
-  var imgFacebook = document.createElement('img');
-  var inputFacebookLink = document.createElement('input');
+    var labelCity = $('<label></label>').text('city:');
+    var inputCity = $('<input>');
 
-  divFacebook.appendChild(imgFacebook);
-  divFacebook.appendChild(inputFacebookLink);
+    div.append(labelCity);
+    div.append(inputCity);
 
-  var divTwitter = document.createElement('div');
+    var labelCountry = $('<label></label>').text('country:');
+    var inputCountry = $('<input>');
 
-  var imgTwitter = document.createElement('img');
-  var inputTwitterLink = document.createElement('input');
+    div.append(labelCountry);
+    div.append(inputCountry);
 
-  divTwitter.appendChild(imgTwitter);
-  divTwitter.appendChild(inputTwitterLink);
+    div.append(deleteButton());
 
-  var divGit = document.createElement('div');
+    return div;
+  }
 
-  var imgGit = document.createElement('img');
-  var inputGitLink = document.createElement('input');
+  function addLink() {
+    var div = $('<div></div>');
 
-  divGit.appendChild(imgGit);
-  divGit.appendChild(inputGitLink);
+    var divFacebook = $('<div></div>');
 
-  var divStack = document.createElement('div');
+    var imgFacebook = $('<img>');
+    var inputFacebookLink = $('<input>');
 
-  var imgStack = document.createElement('img');
-  var inputStackLink = document.createElement('input');
+    divFacebook.append(imgFacebook);
+    divFacebook.append(inputFacebookLink);
 
-  divStack.appendChild(imgStack);
-  divStack.appendChild(inputStackLink);
+    var divTwitter = $('<div></div>');
 
-  div.appendChild(divFacebook);
-  div.appendChild(divTwitter);
-  div.appendChild(divGit);
-  div.appendChild(divStack);
+    var imgTwitter = $('<img>');
+    var inputTwitterLink = $('<input>');
 
-  var btnDel = document.createElement('button');
-  btnDel.textContent = 'x';
-  btnDel.classList.add('btnDel');
-  btnDel.addEventListener('click', function() {
-    var targetDiv = this.parentNode;
-    targetDiv.parentNode.removeChild(targetDiv);
-  });
-  div.appendChild(btnDel);
+    divTwitter.append(imgTwitter);
+    divTwitter.append(inputTwitterLink);
 
-  return div;
-}
+    var divGit = $('<div></div>');
 
-/////////////////  code
+    var imgGit = $('<img>');
+    var inputGitLink = $('<input>');
 
-var addBtns = document.querySelectorAll('.btnAdd');
-addBtns.forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    //console.log(this);
-    switch (this.parentNode.id) {
+    divGit.append(imgGit);
+    divGit.append(inputGitLink);
+
+    var divStack = $('<div></div>');
+
+    var imgStack = $('<img>');
+    var inputStackLink = $('<input>');
+
+    divStack.append(imgStack);
+    divStack.append(inputStackLink);
+
+    div.append(divFacebook);
+    div.append(divTwitter);
+    div.append(divGit);
+    div.append(divStack);
+
+    div.append(deleteButton());
+
+    return div;
+  }
+
+  /////////////////  code
+
+  $('.btnAdd').on('click', function() {
+    switch ($(this).parent().attr('id')) {
       case 'education':
-        educationList.appendChild(addEduExp('education'));
+        educationList.append(addEduExp('education'));
         break;
       case 'experience':
-        experienceList.appendChild(addEduExp('experience'));
+        experienceList.append(addEduExp('experience'));
         break;
       case 'skills':
-        skillsList.appendChild(addSkill());
+        skillsList.append(addSkill());
         break;
       case 'languages':
-        languagesList.appendChild(addLanguage());
+        languagesList.append(addLanguage());
         break;
       case 'hobbies':
-        hobbiesList.appendChild(addHobby());
+        hobbiesList.append(addHobby());
         break;
       case 'contacts':
-        contactsList.appendChild(addContact());
+        contactsList.append(addContact());
         break;
       case 'links':
-        linksList.appendChild(addLink());
+        linksList.append(addLink());
         break;
     }
   });
+
+  $('#btnSave').on('click', function() {
+
+  });
+
 });
